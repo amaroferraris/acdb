@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>AUTOCITY</title>
+</head>
+
+<body>
+
+    <div class="main-div">
+        <div class="inner-div">
+            <div id="sucursal-container" class="sucursal-container">
+                <!-- {% if sucursales %}
+                {% for sucursal in sucursales %}
+                <input data-sucursal-name="{{ sucursal.name }}" type="radio" id="sucursal-{{sucursal.id}}" name="sucursal" value="sucursal-{{sucursal.id}}">
+                <label for="sucursal-{{sucursal.id}}">{{sucursal.name}}</label>
+                <br>
+                {% endfor %}
+                {% else %}
+                <p>No sucursales are available.</p>
+                {% endif %} -->
+            </div>
+
+            <div id="brand-container" class="brand-container"></div>
+
+            <div id="model-container" class="model-container"></div>
+        </div>
+        <div id="accessory-container" class="accessory-container"></div>
+    </div>
+
+    <button class="btn-output" id="btn-output">GENERATE MESSAGE</button>
+    <p class="output" id="output"></p>
+
+    {{ sucursales|json_script:"sucursal-json" }}
+    {{ carbrands|json_script:"carbrand-json" }}
+    {{ carmodels|json_script:"carmodel-json" }}
+    {{ caraccessories|json_script:"caraccessory-json" }}
+
+    <script src="{% static 'index.js' %}"></script>
+    
+</body>
+
+</html>
