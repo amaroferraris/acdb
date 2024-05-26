@@ -34,12 +34,12 @@ label {
     flex-direction: column;
     width: 15%;
     border-right: 1px solid rgb(212, 212, 212);
-    border-bottom: 1px solid rgb(212, 212, 212);
 }
 
-.accessory-container {
+/* .accessory-container {
+    border-right: 1px solid rgb(212, 212, 212);
     border-bottom: 1px solid rgb(212, 212, 212);
-}
+} */
 
 label:hover {
     color: rgb(250, 250, 250);
@@ -78,4 +78,77 @@ label:hover {
 p {
     padding: 1rem;
     padding-left: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+    div {
+        padding: .5rem;
+    }
+
+    .main-div {
+        flex-direction: column;
+    }
+
+    .inner-div {
+        display: grid;
+        grid-template-columns: 3, 1fr;
+        /* grid-auto-rows: minmax(100px, auto); */
+        width: 100%;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .sucursal-container {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .brand-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .model-container {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .accessory-container {
+        grid-column: 1/3;
+        grid-row: 2;
+        border-bottom: none;
+    }
+
+    .btn-output,
+    .btn-copy,
+    .btn-clear,
+    .btn-copied {
+        font-size: 0px;
+    }
+
+    .btn-output:after {
+        content: "GENERATE";
+    }
+
+    .btn-copy:after {
+        content: "COPY";
+    }
+
+    .btn-clear:after {
+        content: "CLEAR";
+    }
+
+    .btn-copied:after {
+        content: "COPY";
+    }
+
+    .btn-output:after,
+    .btn-copy:after,
+    .btn-clear:after,
+    .btn-copied:after {
+        font-size: 16px;
+    }
+
+
 }
