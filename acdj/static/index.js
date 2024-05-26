@@ -113,7 +113,12 @@ function displayAccessories(model) {
 
     const checkedSucursal = document.querySelector('input[type="radio"]:checked');
 
-    jsonCarAccessory.forEach(accessory => {
+    // SORTING ACCESSORIES
+    jsonCarAccessory.sort((a, b) => {
+        if (a.name < b.name) {return -1}
+        if (a.name > b.name) {return 1}
+        return 0;
+    }).forEach(accessory => {
 
         const inputAccessory = document.createElement('input');
         inputAccessory.type = 'checkbox';
@@ -128,7 +133,7 @@ function displayAccessories(model) {
         if (accessory.model_id == model.id) {
 
             const sucursalName = checkedSucursal.value;
-            const pattern = new RegExp('.*EXCEPTO.*' + sucursalName, 'i')
+            const pattern = new RegExp(sucursalName, 'i')
 
             if (!accessory.name.match(pattern)) {
 
@@ -167,7 +172,7 @@ btn.addEventListener('click', () => {
     checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
 
-            checkedAccesoriesName.push(checkbox.value.split(' (')[0]);
+            checkedAccesoriesName.push(checkbox.value.split(' (EXCEPTO')[0]);
             checkedAccesoriesPrice.push(jsonCarAccessory.filter(item => item.id == checkbox.id.split('-')[1] && item.model_id == checkedModelId)[0].price)
 
         }
