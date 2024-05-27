@@ -34,6 +34,11 @@ jsonSucursal.forEach(sucursal => {
 
     inputSucursal.addEventListener('click', () => {
 
+        accessoryContainer.classList.remove('color-jeep')
+        accessoryContainer.classList.remove('color-nissan')
+        accessoryContainer.classList.remove('color-renault')
+        accessoryContainer.classList.remove('color-vw')
+
         brandContainer.textContent = '';
         modelContainer.textContent = '';
         message.textContent = '';
@@ -46,6 +51,11 @@ jsonSucursal.forEach(sucursal => {
 
 // DISPLAY BRANDS
 function displayBrands() {
+
+    accessoryContainer.classList.remove('color-jeep')
+    accessoryContainer.classList.remove('color-nissan')
+    accessoryContainer.classList.remove('color-renault')
+    accessoryContainer.classList.remove('color-vw')
 
     modelContainer.textContent = '';
     accessoryContainer.textContent = '';
@@ -75,6 +85,11 @@ function displayBrands() {
 
 // DISPLAY MODELS
 function displayModels(brand) {
+
+    accessoryContainer.classList.remove('color-jeep')
+    accessoryContainer.classList.remove('color-nissan')
+    accessoryContainer.classList.remove('color-renault')
+    accessoryContainer.classList.remove('color-vw')
 
     modelContainer.textContent = '';
     accessoryContainer.textContent = '';
@@ -108,15 +123,23 @@ function displayModels(brand) {
 // DISPLAY ACCESSORIES
 function displayAccessories(model) {
 
+    accessoryContainer.classList.remove('color-jeep')
+    accessoryContainer.classList.remove('color-nissan')
+    accessoryContainer.classList.remove('color-renault')
+    accessoryContainer.classList.remove('color-vw')
+
     accessoryContainer.textContent = '';
     message.textContent = '';
 
     const checkedSucursal = document.querySelector('input[type="radio"]:checked');
 
+    console.log(model.brand_id)
+
+
     // SORTING ACCESSORIES
     jsonCarAccessory.sort((a, b) => {
-        if (a.name < b.name) {return -1}
-        if (a.name > b.name) {return 1}
+        if (a.name < b.name) { return -1 }
+        if (a.name > b.name) { return 1 }
         return 0;
     }).forEach(accessory => {
 
@@ -129,6 +152,16 @@ function displayAccessories(model) {
         const labelAccessory = document.createElement('label');
         labelAccessory.htmlFor = `accessory-${accessory.id}`;
         labelAccessory.textContent = `${accessory.name} - $ ${accessory.price.toFixed(2)}`;
+
+        if (model.brand_id == 1) {
+            accessoryContainer.classList.add('color-jeep')
+        } else if (model.brand_id == 2) {
+            accessoryContainer.classList.add('color-nissan')
+        } else if (model.brand_id == 3) {
+            accessoryContainer.classList.add('color-renault')
+        } else if (model.brand_id == 4) {
+            accessoryContainer.classList.add('color-vw')
+        }
 
         if (accessory.model_id == model.id) {
 
@@ -177,8 +210,6 @@ btn.addEventListener('click', () => {
 
         }
     })
-
-    console.log(checkedAccesoriesPrice)
 
 
     let accesoryNameAndPrice = ''

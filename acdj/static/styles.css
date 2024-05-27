@@ -1,5 +1,26 @@
 :root {
     --color1: rgb(35, 35, 35);
+    --color-jeep: #0D0D0D;
+    --color-nissan: #434343;
+    --color-renault:#FFCC00;
+    --color-vw:#1C4587;
+}
+
+.color-jeep {
+    background-color: var(--color-jeep);
+}
+
+.color-nissan {
+    background-color: var(--color-nissan);
+}
+
+.color-renault {
+    background-color: var(--color-renault);
+    color: rgb(35, 35, 35);
+}
+
+.color-vw {
+    background-color: var(--color-vw);
 }
 
 * {
@@ -42,7 +63,7 @@ label {
 } */
 
 label:hover {
-    color: rgb(250, 250, 250);
+    color: rgb(150, 150, 150);
 }
 
 .btn-output,
