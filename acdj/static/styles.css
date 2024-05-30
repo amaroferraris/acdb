@@ -57,11 +57,6 @@ label {
     border-right: 1px solid rgb(212, 212, 212);
 }
 
-/* .accessory-container {
-    border-right: 1px solid rgb(212, 212, 212);
-    border-bottom: 1px solid rgb(212, 212, 212);
-} */
-
 label:hover {
     color: whitesmoke;
 }
@@ -72,6 +67,7 @@ label:hover {
 }
 
 .btn-output,
+.btn-output-presupuesto,
 .btn-copy,
 .btn-clear {
     padding: .5rem;
@@ -84,7 +80,12 @@ label:hover {
     background-color: rgb(72, 99, 32);
 }
 
+.btn-output-presupuesto {
+    background-color: rgb(150, 150, 0);
+}
+
 .btn-copy {
+    margin-left: 1rem;
     background-color: rgb(65, 95, 112);
     transition: .5s;
 }
@@ -95,6 +96,7 @@ label:hover {
 }
 
 .btn-copied {
+    margin-left: 1rem;
     background-color: rgb(185, 215, 232);
     padding: .5rem;
     border-radius: .5rem;
@@ -147,6 +149,7 @@ p {
     }
 
     .btn-output,
+    .btn-output-presupuesto,
     .btn-copy,
     .btn-clear,
     .btn-copied {
@@ -154,22 +157,27 @@ p {
     }
 
     .btn-output:after {
-        content: "GENERATE";
+        content: "COMPRA";
+    }
+
+    .btn-output-presupuesto:after {
+        content: "PRESUP";
     }
 
     .btn-copy:after {
-        content: "COPY";
+        content: "COPIAR";
     }
 
     .btn-clear:after {
-        content: "CLEAR";
+        content: "BORRAR";
     }
 
     .btn-copied:after {
-        content: "COPY";
+        content: "COPIAR";
     }
 
     .btn-output:after,
+    .btn-output-presupuesto:after,
     .btn-copy:after,
     .btn-clear:after,
     .btn-copied:after {
