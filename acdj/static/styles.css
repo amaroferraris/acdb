@@ -67,7 +67,9 @@ label:hover {
 }
 
 .btn-output,
+.btn-output-off,
 .btn-output-presupuesto,
+.btn-output-presupuesto-off,
 .btn-copy,
 .btn-clear {
     padding: .5rem;
@@ -80,8 +82,18 @@ label:hover {
     background-color: rgb(72, 99, 32);
 }
 
+.btn-output-off {
+    color: rgb(52, 72, 12);
+    background-color: rgb(142, 162, 102);
+}
+
 .btn-output-presupuesto {
-    background-color: rgb(150, 150, 0);
+    background-color: rgb(100, 100, 0);
+}
+
+.btn-output-presupuesto-off {
+    color: rgb(100, 100, 0);
+    background-color: rgb(250, 250, 100);
 }
 
 .btn-copy {
@@ -149,7 +161,9 @@ p {
     }
 
     .btn-output,
+    .btn-output-off,
     .btn-output-presupuesto,
+    .btn-output-presupuesto-off,
     .btn-copy,
     .btn-clear,
     .btn-copied {
@@ -159,9 +173,17 @@ p {
     .btn-output:after {
         content: "COMPRA";
     }
-
+    
+    .btn-output-off:after {
+        content: "-10%";
+    }
+    
     .btn-output-presupuesto:after {
         content: "PRESUP";
+    }
+
+    .btn-output-presupuesto-off:after {
+        content: "-10%";
     }
 
     .btn-copy:after {
@@ -177,12 +199,17 @@ p {
     }
 
     .btn-output:after,
+    .btn-output-off:after,
     .btn-output-presupuesto:after,
+    .btn-output-presupuesto-off:after,
     .btn-copy:after,
     .btn-clear:after,
     .btn-copied:after {
         font-size: 16px;
     }
 
+    .btn-copy {
+        margin-left: 2rem;
+    }
 
 }
