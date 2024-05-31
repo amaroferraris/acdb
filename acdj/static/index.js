@@ -232,7 +232,7 @@ btn.addEventListener('click', () => {
     if (futureDate.getDay() === 6) { // Saturday
         futureDate.setDate(futureDate.getDate() + 2); // Add 2 days to skip Saturday
     } else if (futureDate.getDay() === 0) { // Monday
-        futureDate.setDate(futureDate.getDate() + 1); // Add 1 day to skip Monday
+        futureDate.setDate(futureDate.getDate() + 2); // Add 1 day to skip Monday
     }
 
     const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
@@ -346,7 +346,7 @@ btnOff.addEventListener('click', () => {
     if (futureDate.getDay() === 6) { // Saturday
         futureDate.setDate(futureDate.getDate() + 2); // Add 2 days to skip Saturday
     } else if (futureDate.getDay() === 0) { // Monday
-        futureDate.setDate(futureDate.getDate() + 1); // Add 1 day to skip Monday
+        futureDate.setDate(futureDate.getDate() + 2); // Add 1 day to skip Monday
     }
 
     const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
