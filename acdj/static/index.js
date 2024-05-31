@@ -459,7 +459,7 @@ btnPresupuesto.addEventListener('click', () => {
     message.innerHTML = '';
     message.innerHTML = `Te paso el presupuesto de los accesorios de tu interés:\n
 <ul>${accesoryNameAndPrice}</ul>
-- Total: $${formattedFinalPrice}
+Total: $${formattedFinalPrice}
 \nEl presupuesto tiene validez por 48hs hábiles, pasado este plazo los valores quedan sujetos a modificación hasta el momento de su confirmación.`;
 
     // CHECKING IF A COPY BUTTON ALREADY EXISTS
