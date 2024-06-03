@@ -11,6 +11,7 @@ let jsonCarBrand = JSON.parse(document.getElementById('carbrand-json').textConte
 let jsonCarModel = JSON.parse(document.getElementById('carmodel-json').textContent)
 let jsonCarAccessory = JSON.parse(document.getElementById('caraccessory-json').textContent)
 
+const btnContainer = document.getElementById('btn-container')
 const btn = document.getElementById('btn-output');
 const btnOff = document.getElementById('btn-output-off');
 const btnPresupuesto = document.getElementById('btn-output-presupuesto');
@@ -251,53 +252,8 @@ btn.addEventListener('click', () => {
 Total a abonar: $${formattedFinalPrice}
 \nEl monto de tu orden se congela por 48hs hábiles y podés abonar hasta el ${formattedFutureDate} inclusive.`;
 
-    // CHECKING IF A COPY BUTTON ALREADY EXISTS
-    const btnGenerateNextElement = btn.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
-    const messagePreviousElement = message.previousElementSibling;
+    copyAndClear();
 
-    if (btnGenerateNextElement
-        && btnGenerateNextElement.className === 'btn-copy'
-        || btnGenerateNextElement.className === 'btn-copied'
-        && messagePreviousElement.className === 'btn-clear'
-    ) {
-        // IF IT DOES, REMOVE IT (TO AVOID MULTIPLE COPY BUTTONS)
-        btnGenerateNextElement.remove();
-        messagePreviousElement.remove();
-    };
-
-    // CREATING A COPY BUTTON
-    const btnCopyCreate = '<button class="btn-copy" id="btn-copy">COPIAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnCopyCreate)
-
-
-    const btnCopy = document.getElementById('btn-copy')
-
-    btnCopy.addEventListener('click', () => {
-
-        const copyText = document.getElementById('output');
-        const copiedText = copyText.textContent;
-
-        navigator.clipboard.writeText(copiedText)
-            .then(() => {
-                btnCopy.classList.remove('btn-copy');
-                btnCopy.classList.add('btn-copied');
-                setTimeout(() => {
-                    btnCopy.classList.remove('btn-copied');
-                    btnCopy.classList.add('btn-copy');
-                }, 500)
-            })
-            .catch(err => {
-                console.error('Error copying message to clipboard: ', err);
-            });
-    });
-
-    // CREATING A CLEAR MESSAGE BUTTON
-    const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnClearCreate);
-
-    const btnClear = document.getElementById('btn-clear')
-
-    btnClear.addEventListener('click', () => { message.innerHTML = '' });
 });
 
 
@@ -363,57 +319,12 @@ btnOff.addEventListener('click', () => {
     message.innerHTML = `Queda confirmada la colocación de accesorios, te envío el detalle de tu compra:\n
 <ul>${accesoryNameAndPrice}</ul>
 Total del pedido: $${formattedFinalPrice}
-Descuento: -$${((applyDiscount(finalPrice)-finalPrice)*(-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
+Descuento: -$${((applyDiscount(finalPrice) - finalPrice) * (-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 \nEl monto de tu orden se congela por 48hs hábiles y podés abonar hasta el ${formattedFutureDate} inclusive.`;
 
-    // CHECKING IF A COPY BUTTON ALREADY EXISTS
-    const btnGenerateNextElement = btnOff.nextElementSibling.nextElementSibling.nextElementSibling;
-    const messagePreviousElement = message.previousElementSibling;
+    copyAndClear()
 
-    if (btnGenerateNextElement
-        && btnGenerateNextElement.className === 'btn-copy'
-        || btnGenerateNextElement.className === 'btn-copied'
-        && messagePreviousElement.className === 'btn-clear'
-    ) {
-        // IF IT DOES, REMOVE IT (TO AVOID MULTIPLE COPY BUTTONS)
-        btnGenerateNextElement.remove();
-        messagePreviousElement.remove();
-    };
-
-    // CREATING A COPY BUTTON
-    const btnCopyCreate = '<button class="btn-copy" id="btn-copy">COPIAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnCopyCreate)
-
-
-    const btnCopy = document.getElementById('btn-copy')
-
-    btnCopy.addEventListener('click', () => {
-
-        const copyText = document.getElementById('output');
-        const copiedText = copyText.textContent;
-
-        navigator.clipboard.writeText(copiedText)
-            .then(() => {
-                btnCopy.classList.remove('btn-copy');
-                btnCopy.classList.add('btn-copied');
-                setTimeout(() => {
-                    btnCopy.classList.remove('btn-copied');
-                    btnCopy.classList.add('btn-copy');
-                }, 500)
-            })
-            .catch(err => {
-                console.error('Error copying message to clipboard: ', err);
-            });
-    });
-
-    // CREATING A CLEAR MESSAGE BUTTON
-    const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnClearCreate);
-
-    const btnClear = document.getElementById('btn-clear')
-
-    btnClear.addEventListener('click', () => { message.innerHTML = '' });
 });
 
 
@@ -462,53 +373,7 @@ btnPresupuesto.addEventListener('click', () => {
 Total: $${formattedFinalPrice}
 \nEl presupuesto tiene validez por 48hs hábiles, pasado este plazo los valores quedan sujetos a modificación hasta el momento de su confirmación.`;
 
-    // CHECKING IF A COPY BUTTON ALREADY EXISTS
-    const btnGenerateNextElement = btnPresupuesto.nextElementSibling.nextElementSibling;
-    const messagePreviousElement = message.previousElementSibling;
-
-    if (btnGenerateNextElement
-        && btnGenerateNextElement.className === 'btn-copy'
-        || btnGenerateNextElement.className === 'btn-copied'
-        && messagePreviousElement.className === 'btn-clear'
-    ) {
-        // IF IT DOES, REMOVE IT (TO AVOID MULTIPLE COPY BUTTONS)
-        btnGenerateNextElement.remove();
-        messagePreviousElement.remove();
-    };
-
-    // CREATING A COPY BUTTON
-    const btnCopyCreate = '<button class="btn-copy" id="btn-copy">COPIAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnCopyCreate)
-
-
-    const btnCopy = document.getElementById('btn-copy')
-
-    btnCopy.addEventListener('click', () => {
-
-        const copyText = document.getElementById('output');
-        const copiedText = copyText.textContent;
-
-        navigator.clipboard.writeText(copiedText)
-            .then(() => {
-                btnCopy.classList.remove('btn-copy');
-                btnCopy.classList.add('btn-copied');
-                setTimeout(() => {
-                    btnCopy.classList.remove('btn-copied');
-                    btnCopy.classList.add('btn-copy');
-                }, 500)
-            })
-            .catch(err => {
-                console.error('Error copying message to clipboard: ', err);
-            });
-    });
-
-    // CREATING A CLEAR MESSAGE BUTTON
-    const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnClearCreate);
-
-    const btnClear = document.getElementById('btn-clear')
-
-    btnClear.addEventListener('click', () => { message.innerHTML = '' });
+    copyAndClear();
 });
 
 
@@ -556,27 +421,48 @@ btnPresupuestoOff.addEventListener('click', () => {
     message.innerHTML = `Te paso el presupuesto de los accesorios de tu interés:\n
 <ul>${accesoryNameAndPrice}</ul>
 Total del pedido: $${formattedFinalPrice}
-Descuento: -$${((applyDiscount(finalPrice)-finalPrice)*(-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
+Descuento: -$${((applyDiscount(finalPrice) - finalPrice) * (-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 \nEl presupuesto tiene validez por 48hs hábiles, pasado este plazo los valores quedan sujetos a modificación hasta el momento de su confirmación.`;
 
-    // CHECKING IF A COPY BUTTON ALREADY EXISTS
-    const btnGenerateNextElement = btnPresupuesto.nextElementSibling.nextElementSibling;
-    const messagePreviousElement = message.previousElementSibling;
+    copyAndClear();
 
-    if (btnGenerateNextElement
-        && btnGenerateNextElement.className === 'btn-copy'
-        || btnGenerateNextElement.className === 'btn-copied'
-        && messagePreviousElement.className === 'btn-clear'
+});
+
+
+// DISCOUNT
+function applyDiscount(originalPrice) {
+
+    const price = Number(originalPrice)
+
+    const discount = price * 0.10;
+
+    const discountedPrice = price - discount;
+
+    return discountedPrice;
+
+}
+
+
+// COPY AND CLEAR FUNCTION
+function copyAndClear() {
+
+    // CHECKING IF A COPY BUTTON ALREADY EXISTS
+    const existingCopyBtn = btnContainer.lastElementChild.previousElementSibling;
+    const lastElement = btnContainer.lastElementChild;
+
+    if (existingCopyBtn.className === 'btn-copy'
+        || existingCopyBtn.className === 'btn-copied'
+        && lastElement.className === 'btn-clear'
     ) {
-        // IF IT DOES, REMOVE IT (TO AVOID MULTIPLE COPY BUTTONS)
-        btnGenerateNextElement.remove();
-        messagePreviousElement.remove();
+        //    IF IT DOES, REMOVE IT (TO AVOID MULTIPLE COPY BUTTONS)
+        existingCopyBtn.remove();
+        lastElement.remove();
     };
 
     // CREATING A COPY BUTTON
     const btnCopyCreate = '<button class="btn-copy" id="btn-copy">COPIAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnCopyCreate)
+    btnPresupuestoOff.insertAdjacentHTML('afterend', btnCopyCreate)
 
 
     const btnCopy = document.getElementById('btn-copy')
@@ -602,22 +488,9 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
 
     // CREATING A CLEAR MESSAGE BUTTON
     const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
-    message.insertAdjacentHTML('beforebegin', btnClearCreate);
+    btnCopy.insertAdjacentHTML('afterend', btnClearCreate);
 
     const btnClear = document.getElementById('btn-clear')
 
     btnClear.addEventListener('click', () => { message.innerHTML = '' });
-});
-
-
-function applyDiscount(originalPrice) {
-
-    const price = Number(originalPrice)
-
-    const discount = price * 0.10;
-
-    const discountedPrice = price - discount;
-
-    return discountedPrice;
-
 }

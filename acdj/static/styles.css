@@ -2,8 +2,8 @@
     --color1: rgb(35, 35, 35);
     --color-jeep: rgba(13, 13, 13, 0.5);
     --color-nissan: rgba(221, 0, 43, 0.5);
-    --color-renault:rgba(255, 204, 0, 0.6);
-    --color-vw:rgba(28, 69, 135, 0.5);
+    --color-renault: rgba(255, 204, 0, 0.6);
+    --color-vw: rgba(28, 69, 135, 0.5);
 }
 
 .color-jeep {
@@ -30,11 +30,13 @@
 
 html {
     background-color: var(--color1);
+    /* background-color: white; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
     color: rgb(200, 200, 200);
 }
 
-div {
+.main-div {
     padding: .5rem .5rem 1rem 1rem;
 }
 
@@ -54,16 +56,40 @@ label {
     display: flex;
     flex-direction: column;
     width: 15%;
-    border-right: 1px solid rgb(212, 212, 212);
+    padding: inherit;
+    /* border-right: 1px solid rgb(212, 212, 212); */
 }
 
 label:hover {
     color: whitesmoke;
 }
 
-.accessory-container {
+.sucursal-container,
+.brand-container,
+.model-container {
+    padding: inherit;
+    border: 1px solid rgb(212, 212, 212);
     border-radius: .5rem;
-    margin: 1rem;
+    margin-bottom: .25rem;
+}
+
+.model-container {
+    margin-bottom: 9rem;
+}
+
+.accessory-container {
+    padding: inherit;
+    /* overflow: auto; */
+    border-radius: .5rem;
+    margin: .5rem .5rem 9rem .5rem;
+}
+
+.btn-container {
+    background: linear-gradient(to top, var(--color1) 90%, rgba(35, 35, 35, 0));
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: .5rem;
 }
 
 .btn-output,
@@ -75,6 +101,8 @@ label:hover {
     padding: .5rem;
     border-radius: .5rem;
     color: rgb(212, 212, 212);
+    /* position: fixed; */
+    /* bottom: .5rem; */
 }
 
 .btn-output {
@@ -85,16 +113,19 @@ label:hover {
 .btn-output-off {
     color: rgb(52, 72, 12);
     background-color: rgb(162, 182, 122);
+    /* left: 5.7rem; */
 }
 
 .btn-output-presupuesto {
     color: rgb(250, 250, 250);
     background-color: rgb(160, 160, 0);
+    /* left: 9rem; */
 }
 
 .btn-output-presupuesto-off {
     color: rgb(100, 100, 0);
     background-color: rgb(250, 250, 100);
+    /* left: 12.6rem; */
 }
 
 .btn-copy {
@@ -104,24 +135,31 @@ label:hover {
 }
 
 .btn-clear {
+    margin-left: .25rem;
     background-color: rgba(195, 62, 62, 0.5);
-    margin-left: .2rem;
 }
 
 .btn-copied {
-    margin-left: 1rem;
     background-color: rgb(185, 215, 232);
     padding: .5rem;
     border-radius: .5rem;
     color: rgb(29, 29, 29);
+    /* bottom: .5rem; */
+    margin-left: 1rem;
 }
 
 p {
+    font-size: large;
     padding: 1rem;
     padding-left: 2rem;
+    padding-bottom: .5rem;
 }
 
 @media only screen and (max-width: 800px) {
+
+    html {
+        font-size: small;
+    }
 
     div {
         padding: .5rem;
@@ -169,16 +207,17 @@ p {
     .btn-clear,
     .btn-copied {
         font-size: 0px;
+        position: absolute;
     }
 
     .btn-output:after {
         content: "COMPRA";
     }
-    
+
     .btn-output-off:after {
         content: "-10%";
     }
-    
+
     .btn-output-presupuesto:after {
         content: "PRESUP";
     }
@@ -206,7 +245,7 @@ p {
     .btn-copy:after,
     .btn-clear:after,
     .btn-copied:after {
-        font-size: 16px;
+        font-size:small;
     }
 
     .btn-copy {
