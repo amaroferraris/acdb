@@ -17,6 +17,8 @@
             <div id="brand-container" class="brand-container"></div>
 
             <div id="model-container" class="model-container"></div>
+
+            <div id="payment-container" class="payment-container"></div>
         </div>
         <div id="accessory-container" class="accessory-container"></div>
     </div>
@@ -29,9 +31,12 @@
         <button class="btn-output-presupuesto-off" id="btn-output-presupuesto-off">-10%</button>
     </div>
 
+    <p class="mensaje-usuario" id="mensaje-usuario">Ahora el mensaje se copia automáticamente al ser generado.</p>
+
     {{ sucursales|json_script:"sucursal-json" }}
     {{ carbrands|json_script:"carbrand-json" }}
     {{ carmodels|json_script:"carmodel-json" }}
+    {{ payment|json_script:'payment-json' }}
     {{ caraccessories|json_script:"caraccessory-json" }}
 
     <script src="{% static 'index.js' %}"></script>

@@ -65,15 +65,12 @@ label:hover {
 
 .sucursal-container,
 .brand-container,
-.model-container {
+.model-container,
+.payment-container {
     padding: inherit;
     border: 1px solid rgb(212, 212, 212);
     border-radius: .5rem;
     margin-bottom: .25rem;
-}
-
-.model-container {
-    margin-bottom: 9rem;
 }
 
 .accessory-container {
@@ -143,15 +140,24 @@ label:hover {
     padding: .5rem;
     border-radius: .5rem;
     color: rgb(29, 29, 29);
-    /* bottom: .5rem; */
     margin-left: 1rem;
 }
 
-p {
-    font-size: 1rem;
+.output {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: .75rem;
     padding: 1rem;
     padding-left: 2rem;
     padding-bottom: .5rem;
+}
+
+.mensaje-usuario {
+    position: fixed;
+    bottom: .7rem;
+    left: 25rem;
+    padding: .35rem;
+    border-radius: .5rem;
+    background-color: rgb(119, 30, 30);
 }
 
 @media only screen and (max-width: 800px) {

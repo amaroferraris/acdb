@@ -9,6 +9,7 @@ class Sucursal(models.Model):
 
 class CarBrand(models.Model):
     name = models.CharField(max_length=100)
+    paymentData = models.TextField(max_length=250, null=True)
 
     def __str__(self):
         return self.name
@@ -27,3 +28,10 @@ class CarAccessory(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.model}"
+
+class Payment(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return f"{self.name}"
+    
