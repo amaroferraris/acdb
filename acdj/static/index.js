@@ -417,7 +417,7 @@ function paymentTransferMessage() {
 
         const paymentText = `A continuación te envío los datos para realizar la transferencia/depósito:
         \n${brandPaymentData}
-        \nUna vez realizada, te pido que me envíes el comprobante por este canal para reportarlo al área responsable. Al procesar el pago, te enviaremos el recibo de compra a la casilla registrada y el día de la entrega del vehículo te entregaremos la factura.`
+        \nUna vez realizada, te pido que me envíes el comprobante por este canal para reportarlo al área responsable. Al procesar el pago, te enviaremos el recibo de compra a la casilla registrada ... y el día de la entrega del vehículo te entregaremos la factura.`
 
         return paymentText
     } catch (error) {
@@ -434,7 +434,7 @@ function paymentMethodChecked() {
 
     const link = `A continuación te envío el link de pago, el mismo tiene una vigencia de 24hs en caso de que vayas a realizar el pago pasado ese plazo tendrás que pedírmelo nuevamente por esta vía.
 
-
+...
 
 Al realizar el pago se va a generar automáticamente el recibo de compra  y el día de la entrega del vehículo te entregaremos la factura.`
 

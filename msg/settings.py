@@ -88,13 +88,13 @@ WSGI_APPLICATION = 'msg.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
-
 # DATABASES = {
-#     "default" : dj_database_url.parse("postgres://amaro:nFmsreJso7AStCYCiOPB6ReYr9Ur1elf@dpg-cp75hjg21fec73dg6b9g-a.oregon-postgres.render.com/acdb")
-#     }
+#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
+
+DATABASES = {
+    "default" : dj_database_url.parse("postgres://amaro:nFmsreJso7AStCYCiOPB6ReYr9Ur1elf@dpg-cp75hjg21fec73dg6b9g-a.oregon-postgres.render.com/acdb")
+    }
 
 
 # Password validation
