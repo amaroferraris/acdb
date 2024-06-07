@@ -200,7 +200,7 @@ function displayAccessories(model) {
 
         const labelAccessory = document.createElement('label');
         labelAccessory.htmlFor = `accessory-${accessory.id}`;
-        labelAccessory.textContent = `${accessory.name} - $ ${accessory.price.toFixed(2)}`;
+        labelAccessory.textContent = `${accessory.code} ${accessory.name} - $ ${accessory.price.toFixed(2)}`;
 
         if (model.brand_id == 1) {
             accessoryContainer.classList.add('color-jeep')
@@ -232,16 +232,16 @@ function displayAccessories(model) {
 }
 
 
-// MESSAGE 
+// MESSAGE
 btn.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     const formattedFutureDate = gettingDate()
 
     message.innerHTML = '';
     message.innerHTML = `Queda confirmada la colocación de accesorios, te envío el detalle de tu compra:\n
-<ul>${accessoryNameAndPrice}</ul>
+<ul>${accessoryNamePriceCode}</ul>
 Total a abonar: $${formattedFinalPrice}
 \nEl monto de tu orden se congela por 48hs hábiles y podés abonar hasta el ${formattedFutureDate} inclusive.
 \n${paymentMethodChecked()}
@@ -260,13 +260,13 @@ Total a abonar: $${formattedFinalPrice}
 // 10% OFF
 btnOff.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     const formattedFutureDate = gettingDate()
 
     message.innerHTML = '';
     message.innerHTML = `Queda confirmada la colocación de accesorios, te envío el detalle de tu compra:\n
-<ul>${accessoryNameAndPrice}</ul>
+<ul>${accessoryNamePriceCode}</ul>
 Total del pedido: $${formattedFinalPrice}
 Descuento: -$${((applyDiscount(finalPrice) - finalPrice) * (-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
@@ -287,11 +287,11 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
 // PRESUPUESTO 
 btnPresupuesto.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     message.innerHTML = '';
     message.innerHTML = `Te paso el presupuesto de los accesorios de tu interés:\n
-<ul>${accessoryNameAndPrice}</ul>
+<ul>${accessoryNamePriceCode}</ul>
 Total: $${formattedFinalPrice}
 \nEl presupuesto tiene validez por 48hs hábiles, pasado este plazo los valores quedan sujetos a modificación hasta el momento de su confirmación.`;
 
@@ -307,11 +307,11 @@ Total: $${formattedFinalPrice}
 // PRESUPUESTO 10% OFF
 btnPresupuestoOff.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     message.innerHTML = '';
     message.innerHTML = `Te paso el presupuesto de los accesorios de tu interés:\n
-<ul>${accessoryNameAndPrice}</ul>
+<ul>${accessoryNamePriceCode}</ul>
 Total del pedido: $${formattedFinalPrice}
 Descuento: -$${((applyDiscount(finalPrice) - finalPrice) * (-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
 Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}
@@ -329,7 +329,7 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
 
 btnTotal.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     message.innerHTML = '';
     message.innerHTML = `TOTAL: $ ${formattedFinalPrice}`
@@ -346,7 +346,7 @@ btnTotal.addEventListener('click', () => {
 
 btnTotalOff.addEventListener('click', () => {
 
-    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+    const [accessoryNamePriceCode, finalPrice, formattedFinalPrice] = gettingInputData()
 
     message.innerHTML = '';
     message.innerHTML = `
@@ -401,22 +401,22 @@ function gettingInputData() {
     checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
 
-            checkedAccessoriesCode.push()
+            checkedAccessoriesCode.push(jsonCarAccessory.filter(item => item.id == checkbox.id.split('-')[1] && item.model_id == checkedModelId)[0].code)
             checkedAccessoriesName.push(checkbox.value.split(' (-')[0]);
             checkedAccessoriesPrice.push(jsonCarAccessory.filter(item => item.id == checkbox.id.split('-')[1] && item.model_id == checkedModelId)[0].price)
 
         }
     })
 
-    let accessoryNameAndPrice = ''
+    let accessoryNamePriceCode = ''
     for (const item in checkedAccessoriesName) {
-        accessoryNameAndPrice += `<li> - ${checkedAccessoriesName[item]}: $${checkedAccessoriesPrice[item].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}\n</li>`
+        accessoryNamePriceCode += `<li> - ${checkedAccessoriesCode[item]} ${checkedAccessoriesName[item]}: $${checkedAccessoriesPrice[item].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}\n</li>`
     }
 
     const finalPrice = checkedAccessoriesPrice.reduce((acc, currVal) => acc + currVal, 0);
     const formattedFinalPrice = finalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')
 
-    return [accessoryNameAndPrice, finalPrice, formattedFinalPrice]
+    return [accessoryNamePriceCode, finalPrice, formattedFinalPrice]
 
 }
 
