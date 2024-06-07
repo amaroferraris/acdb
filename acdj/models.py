@@ -23,11 +23,12 @@ class CarModel(models.Model):
 
 class CarAccessory(models.Model):
     model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
+    code = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=100)
     price = models.FloatField()
 
     def __str__(self):
-        return f"{self.name} - {self.model}"
+        return f"{self.code} - {self.name} - {self.model}"
 
 class Payment(models.Model):
     name = models.CharField(max_length=100)

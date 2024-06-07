@@ -394,13 +394,15 @@ function gettingInputData() {
 
     // Getting accessory
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+    const checkedAccessoriesCode = [];
     const checkedAccessoriesName = [];
     const checkedAccessoriesPrice = [];
 
     checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
 
-            checkedAccessoriesName.push(checkbox.value.split(' (EXCEPTO')[0]);
+            checkedAccessoriesCode.push()
+            checkedAccessoriesName.push(checkbox.value.split(' (-')[0]);
             checkedAccessoriesPrice.push(jsonCarAccessory.filter(item => item.id == checkbox.id.split('-')[1] && item.model_id == checkedModelId)[0].price)
 
         }
