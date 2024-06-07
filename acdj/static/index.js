@@ -20,6 +20,8 @@ const btn = document.getElementById('btn-output');
 const btnOff = document.getElementById('btn-output-off');
 const btnPresupuesto = document.getElementById('btn-output-presupuesto');
 const btnPresupuestoOff = document.getElementById('btn-output-presupuesto-off');
+const btnTotal = document.getElementById('btn-output-total');
+const btnTotalOff = document.getElementById('btn-output-total-off');
 
 const message = document.getElementById('output');
 
@@ -325,6 +327,43 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
 });
 
 
+btnTotal.addEventListener('click', () => {
+
+    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+
+    message.innerHTML = '';
+    message.innerHTML = `TOTAL: $ ${formattedFinalPrice}`
+
+    // COPYING TEXT
+    const copyText = document.getElementById('output');
+    const copiedText = copyText.textContent;
+    navigator.clipboard.writeText(copiedText)
+
+    clearButton();
+
+})
+
+
+btnTotalOff.addEventListener('click', () => {
+
+    const [accessoryNameAndPrice, finalPrice, formattedFinalPrice] = gettingInputData()
+
+    message.innerHTML = '';
+    message.innerHTML = `
+Total del pedido: $${formattedFinalPrice} || 
+Descuento: -$${((applyDiscount(finalPrice) - finalPrice) * (-1)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')} || 
+TOTAL: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }).replace('R$', '')}`;
+
+    // COPYING TEXT
+    const copyText = document.getElementById('output');
+    const copiedText = copyText.textContent;
+    navigator.clipboard.writeText(copiedText)
+
+    clearButton();
+
+})
+
+
 // DISCOUNT
 function applyDiscount(originalPrice) {
 
@@ -470,7 +509,7 @@ function clearButton() {
     }
  
     const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
-    btnPresupuestoOff.insertAdjacentHTML('afterend', btnClearCreate);
+    btnTotalOff.insertAdjacentHTML('afterend', btnClearCreate);
     
     const btnClear = document.getElementById('btn-clear')
     
