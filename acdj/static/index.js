@@ -9,6 +9,10 @@ const modelSelect = document.getElementById("modelSelect");
 const paymentSelect = document.getElementById("paymentSelect");
 const accessorySelect = document.getElementById("accessorySelect");
 
+const displayingBrands = document.querySelector('.brand-container');
+const displayingModels = document.querySelector('.model-container');
+const displayingPayment = document.querySelector('.payment-container');
+
 let jsonSucursal = JSON.parse(document.getElementById('sucursal-json').textContent);
 let jsonCarBrand = JSON.parse(document.getElementById('carbrand-json').textContent);
 let jsonCarModel = JSON.parse(document.getElementById('carmodel-json').textContent);
@@ -53,7 +57,11 @@ jsonSucursal.forEach(sucursal => {
         brandContainer.textContent = '';
         modelContainer.textContent = '';
         message.textContent = '';
-
+        
+        displayingBrands.style.display = 'block'
+        displayingModels.style.display = 'none'
+        displayingPayment.style.display = 'none'
+        
         displayBrands();
 
     });
@@ -89,9 +97,14 @@ function displayBrands() {
         brandContainer.appendChild(labelBrand);
         brandContainer.appendChild(document.createElement('br'));
 
+
         inputBrand.addEventListener('click', () => {
+
+            displayingModels.style.display = 'block'
+
             displayModels(brand);
             displayPayment();
+
         });
     });
 }
@@ -129,6 +142,8 @@ function displayModels(brand) {
             modelContainer.appendChild(document.createElement('br'));
 
             inputModel.addEventListener('click', () => {
+
+                displayingPayment.style.display = 'block'
 
                 displayPayment(brand, model);
                 displayAccessories(model);
@@ -509,14 +524,14 @@ function clearButton() {
     if (btnContainer.lastElementChild.className === 'btn-clear') {
         btnContainer.lastElementChild.remove()
     }
- 
+
     const btnClearCreate = '<button class="btn-clear" id="btn-clear">BORRAR</button>';
     btnTotalOff.insertAdjacentHTML('afterend', btnClearCreate);
-    
+
     const btnClear = document.getElementById('btn-clear')
-    
+
     btnClear.addEventListener('click', () => { message.innerHTML = '' });
-    
+
 }
 
 
