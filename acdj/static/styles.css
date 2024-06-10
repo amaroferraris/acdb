@@ -62,8 +62,18 @@ label {
     /* border-right: 1px solid rgb(212, 212, 212); */
 }
 
+label {
+    display: inline-block;
+    width: 90%;
+}
+
+.accessory-container > label {
+    width: 95%;
+}
+
 label:hover {
-    color: whitesmoke;
+    background-color: rgba(70, 70, 70, 0.1);
+    color: rgb(230, 230, 230);
 }
 
 .sucursal-container,
@@ -91,7 +101,7 @@ label:hover {
     padding: inherit;
     width: 56rem;
     border-radius: .5rem;
-    margin: .5rem .5rem 9rem 14rem;
+    margin: .5rem .5rem .5rem 14rem;
 }
 
 .btn-container {
