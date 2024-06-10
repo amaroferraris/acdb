@@ -12,6 +12,7 @@ const accessorySelect = document.getElementById("accessorySelect");
 const displayingBrands = document.querySelector('.brand-container');
 const displayingModels = document.querySelector('.model-container');
 const displayingPayment = document.querySelector('.payment-container');
+const displayingOutput = document.querySelector('.output');
 
 let jsonSucursal = JSON.parse(document.getElementById('sucursal-json').textContent);
 let jsonCarBrand = JSON.parse(document.getElementById('carbrand-json').textContent);
@@ -267,6 +268,7 @@ Total a abonar: $${formattedFinalPrice}
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
 
+    displayOutput()
     clearButton();
 
 });
@@ -294,6 +296,7 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
 
+    displayOutput()
     clearButton();
 
 });
@@ -315,6 +318,7 @@ Total: $${formattedFinalPrice}
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
 
+    displayOutput()
     clearButton();
 });
 
@@ -337,6 +341,7 @@ Total a abonar: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'c
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
 
+    displayOutput()
     clearButton();
 
 });
@@ -354,6 +359,7 @@ btnTotal.addEventListener('click', () => {
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
 
+    displayOutput()
     clearButton();
 
 })
@@ -373,7 +379,8 @@ TOTAL: $${applyDiscount(finalPrice).toLocaleString('pt-BR', { style: 'currency',
     const copyText = document.getElementById('output');
     const copiedText = copyText.textContent;
     navigator.clipboard.writeText(copiedText)
-
+    
+    displayOutput()
     clearButton();
 
 })
@@ -530,10 +537,15 @@ function clearButton() {
 
     const btnClear = document.getElementById('btn-clear')
 
-    btnClear.addEventListener('click', () => { message.innerHTML = '' });
+    btnClear.addEventListener('click', () => { displayingOutput.style.display = 'none' });
 
 }
 
+function displayOutput() {
+
+    return displayingOutput.style.display = 'block'
+
+}
 
 // // COPY AND CLEAR FUNCTION
 // function copyAndClear() {

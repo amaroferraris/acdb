@@ -52,6 +52,9 @@ label {
 }
 
 .inner-div {
+
+    position: fixed;
+
     display: flex;
     flex-direction: column;
     width: 15%;
@@ -76,7 +79,7 @@ label:hover {
 .brand-container,
 .model-container,
 .payment-container {
-    display:none;
+    display: none;
 }
 
 .payment-container {
@@ -84,22 +87,24 @@ label:hover {
 }
 
 .accessory-container {
+
     padding: inherit;
-    /* overflow: auto; */
+    width: 56rem;
     border-radius: .5rem;
-    margin: .5rem .5rem 9rem .5rem;
+    margin: .5rem .5rem 9rem 14rem;
 }
 
 .btn-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 0.2rem;
     max-height: 7rem;
     background: linear-gradient(to top, var(--color1) 90%, rgba(35, 35, 35, 0));
-    margin-left: 1rem;
+    margin-right: 1rem;
     position: fixed;
-    bottom: 0;
+    top: 0;
+    right: 0;
     padding-top: 1rem;
     padding-bottom: .5rem;
 }
@@ -128,7 +133,7 @@ label:hover {
 .btn-output-off {
     grid-column: 2;
     grid-row: 1;
-    width: 3rem;
+    /* width: 3rem; */
     color: rgb(52, 72, 12);
     background-color: rgb(162, 182, 122);
     /* left: 5.7rem; */
@@ -146,7 +151,7 @@ label:hover {
 .btn-output-presupuesto-off {
     grid-column: 2;
     grid-row: 2;
-    width: 3rem;
+    /* width: 3rem; */
     color: rgb(100, 100, 0);
     background-color: rgb(250, 250, 100);
     /* left: 12.6rem; */
@@ -163,29 +168,32 @@ label:hover {
 .btn-output-total-off {
     grid-column: 2;
     grid-row: 3;
-    width: 3rem;
+    /* width: 3rem; */
     color: rgb(45, 66, 78);
     background-color: rgb(136, 165, 182);
 }
 
 
 .btn-clear {
-    grid-column: 3;
-    grid-row: 1/4;
-    width: 5rem;
+    grid-column: 1/3;
+    grid-row: 4;
+    /* width: 5rem; */
     background-color: rgb(195, 62, 62);
 }
 
 
 .output {
-    grid-column: 4;
-    grid-row: 1/4;
+
+    display: none;
+
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: .75rem;
-    width: 70rem;
-    padding-left: 1rem;
-    /* padding: 1rem; */
-    /* padding-bottom: .5rem; */
+    position: fixed;
+    width: 95%;
+    padding: 1rem;
+    margin-left: 1rem;
+    bottom: 0.5rem;
+    background-color: rgba(35, 35, 35, 0.85);
 }
 
 .mensaje-usuario {
@@ -287,7 +295,7 @@ label:hover {
     .btn-copy:after,
     .btn-clear:after,
     .btn-copied:after {
-        font-size:small;
+        font-size: small;
     }
 
     .btn-copy {

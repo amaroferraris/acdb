@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,6 @@
     </div>
 
     <div class="btn-container" id="btn-container">
-        <p class="output" id="output"></p>
         <button class="btn-output" id="btn-output">COMPRA</button>
         <button class="btn-output-off" id="btn-output-off">-10%</button>
         <button class="btn-output-presupuesto" id="btn-output-presupuesto">PRESUP</button>
@@ -32,7 +32,8 @@
         <button class="btn-output-total" id="btn-output-total">TOTAL</button>
         <button class="btn-output-total-off" id="btn-output-total-off">-10%</button>
     </div>
-
+    
+    <p class="output" id="output"></p>
     <!-- <p class="mensaje-usuario" id="mensaje-usuario"></p> -->
 
     {{ sucursales|json_script:"sucursal-json" }}
@@ -42,7 +43,7 @@
     {{ caraccessories|json_script:"caraccessory-json" }}
 
     <script src="{% static 'index.js' %}"></script>
-    
+
 </body>
 
 </html>
