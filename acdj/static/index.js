@@ -58,11 +58,12 @@ jsonSucursal.forEach(sucursal => {
         brandContainer.textContent = '';
         modelContainer.textContent = '';
         message.textContent = '';
-        
+
         displayingBrands.style.display = 'block'
         displayingModels.style.display = 'none'
         displayingPayment.style.display = 'none'
         
+        undisplayOutput();
         displayBrands();
 
     });
@@ -103,6 +104,7 @@ function displayBrands() {
 
             displayingModels.style.display = 'block'
 
+            undisplayOutput();
             displayModels(brand);
             displayPayment();
 
@@ -146,6 +148,7 @@ function displayModels(brand) {
 
                 displayingPayment.style.display = 'block'
 
+                undisplayOutput();
                 displayPayment(brand, model);
                 displayAccessories(model);
 
@@ -537,13 +540,19 @@ function clearButton() {
 
     const btnClear = document.getElementById('btn-clear')
 
-    btnClear.addEventListener('click', () => { displayingOutput.style.display = 'none' });
+    btnClear.addEventListener('click', () => { undisplayOutput() });
 
 }
 
 function displayOutput() {
 
     return displayingOutput.style.display = 'block'
+
+}
+
+function undisplayOutput() {
+
+    return displayingOutput.style.display = 'none'
 
 }
 
