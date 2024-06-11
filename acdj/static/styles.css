@@ -313,3 +313,25 @@ label:hover {
     }
 
 }
+
+
+@media (min-width: 1600px) {
+    html {
+        font-size: x-large;
+    }
+
+    .accessory-container {
+        width: 60%;
+        margin-left: 14rem;
+    }
+
+}
+
+@media (min-width: 1366px) and (max-width: 1600px) {
+
+    .accessory-container {
+        width: 68%;
+        margin-left: 16rem;
+    }
+
+}
