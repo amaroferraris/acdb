@@ -11,30 +11,32 @@
 
 <body>
 
-    <div class="main-div">
-        <div class="inner-div">
-            <div id="sucursal-container" class="sucursal-container"></div>
+    <div class="main-grid" id="main-grid">
 
-            <div id="brand-container" class="brand-container"></div>
+            <div class="main-container">
+                <div id="sucursal-container" class="sucursal-container"></div>
 
-            <div id="model-container" class="model-container"></div>
+                <div id="brand-container" class="brand-container"></div>
 
-            <div id="payment-container" class="payment-container"></div>
-        </div>
+                <div id="model-container" class="model-container"></div>
+
+                <div id="payment-container" class="payment-container"></div>
+            </div>
+
         <div id="accessory-container" class="accessory-container"></div>
-    </div>
 
-    <div class="btn-container" id="btn-container">
-        <button class="btn-output" id="btn-output">COMPRA</button>
-        <button class="btn-output-off" id="btn-output-off">-10%</button>
-        <button class="btn-output-presupuesto" id="btn-output-presupuesto">PRESUP</button>
-        <button class="btn-output-presupuesto-off" id="btn-output-presupuesto-off">-10%</button>
-        <button class="btn-output-total" id="btn-output-total">TOTAL</button>
-        <button class="btn-output-total-off" id="btn-output-total-off">-10%</button>
+        <div class="btn-container" id="btn-container">
+            <button class="btn-output" id="btn-output">COMPRA</button>
+            <button class="btn-output-off" id="btn-output-off">-10%</button>
+            <button class="btn-output-presupuesto" id="btn-output-presupuesto">PRESUP</button>
+            <button class="btn-output-presupuesto-off" id="btn-output-presupuesto-off">-10%</button>
+            <button class="btn-output-total" id="btn-output-total">TOTAL</button>
+            <button class="btn-output-total-off" id="btn-output-total-off">-10%</button>
+        </div>
+
+        <p class="output" id="output"></p>
+        <!-- <p class="mensaje-usuario" id="mensaje-usuario"></p> -->
     </div>
-    
-    <p class="output" id="output"></p>
-    <!-- <p class="mensaje-usuario" id="mensaje-usuario"></p> -->
 
     {{ sucursales|json_script:"sucursal-json" }}
     {{ carbrands|json_script:"carbrand-json" }}
